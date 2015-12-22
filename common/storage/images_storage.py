@@ -1,5 +1,7 @@
 from ftplib import FTP
 
+public_address = 'http://braderhut.netne.net'
+
 ftp = FTP('braderhut.netne.net')
 
 
@@ -12,5 +14,6 @@ def stop():
     ftp.quit()
 
 
-def save_image(imagename, file):
+def save_and_get_url(imagename, file):
     ftp.storlines('STOR ' + str(imagename), file)
+    return '/'.join(public_address,imagename)
